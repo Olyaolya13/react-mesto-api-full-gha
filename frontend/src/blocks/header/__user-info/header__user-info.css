@@ -1,0 +1,15 @@
+.header__user-info {
+  height: 225px !important;
+  position: relative;
+  top: 40px;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 870px) {
+  .header__user-info {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

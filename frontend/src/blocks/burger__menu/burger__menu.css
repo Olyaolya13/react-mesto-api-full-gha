@@ -1,0 +1,16 @@
+.burger__menu {
+  position: relative;
+  top: 35px;
+}
+
+@media (max-width: 500px) {
+  .burger__menu {
+    display: block;
+  }
+}
+
+@media (min-width: 499px) {
+  .burger__menu {
+    display: none;
+  }
+}

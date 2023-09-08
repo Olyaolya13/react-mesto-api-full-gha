@@ -1,0 +1,11 @@
+.popup__info-image {
+  margin-top: 60px;
+  width: 120px;
+  height: 120px;
+}
+
+@media (max-width: 570px) {
+  .popup__info-image {
+    margin-top: 40px;
+  }
+}

@@ -1,0 +1,14 @@
+.popup__info {
+  padding-right: 40px;
+  box-sizing: border-box;
+  height: 330px;
+  align-items: center;
+  width: 430px;
+}
+
+@media (max-width: 570px) {
+  .popup__info {
+    width: 280px;
+    padding-right: 15px;
+  }
+}

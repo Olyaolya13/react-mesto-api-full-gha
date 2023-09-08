@@ -1,0 +1,8 @@
+.header__info-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 40px;
+  border-bottom: 0.5px solid rgba(84, 84, 84, 0.7);
+  width: 94vw;
+}
