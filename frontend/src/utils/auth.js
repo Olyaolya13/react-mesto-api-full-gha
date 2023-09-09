@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://apiMestoRus.nomoredomainsicu.ru';
+export const BASE_URL = 'https://apiMestoRus.nomoredomainsicu.ru';
 
 const checkResponseServer = res => {
   if (res.ok) {

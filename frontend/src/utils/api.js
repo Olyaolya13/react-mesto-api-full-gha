@@ -112,7 +112,7 @@ class Api {
 
 
 const api = new Api({
-  baseUrl: 'http://apiMestoRus.nomoredomainsicu.ru', 
+  baseUrl: 'https://apiMestoRus.nomoredomainsicu.ru', 
 })
 export default api;
 
