@@ -124,8 +124,6 @@ module.exports.login = (req, res, next) => {
       const token = jwt.sign({ _id: user._id }, 'secret-key', {
         expiresIn: '1w',
       });
-      // Записываем токен в httpOnly куку
-      // res.cookie('jwt', token, { httpOnly: true });
       res.send({ token });
     })
     .catch((err) => {
