@@ -5,12 +5,22 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { celebrate, Joi, errors } = require('celebrate');
 const cors = require('cors');
+const { rateLimit } = require('express-rate-limit');
 const { UrlPattern } = require('./errors/constants/constants');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const NotFoundError = require('./errors/not-found-error');
 
 const app = express();
 const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 app.use(cors());
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: 'Слишком много запросов с этого IP, пожалуйста, подождите 15 минут',
+});
+
+app.use(limiter);
 
 app.use(helmet()); // middleware для усиления безопасности
 app.use(bodyParser.json());// Обработка JSON-данных
@@ -57,13 +67,13 @@ app.use(auth);
 app.use('/users', require('./routes/users'));
 app.use('/cards', require('./routes/cards'));
 
-app.use('*', (req, res) => {
-  res.status(404).send({ message: 'Страница не найдена' });
-});
-
 app.use(errorLogger); // подключаем логгер ошибок
 
 app.use(errors());
+
+app.use((req, res, next) => {
+  next(new NotFoundError('Страница не найдена'));
+});
 
 app.use((err, req, res, next) => {
   const { statusCode = 500, message } = err;
